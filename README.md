@@ -1,8 +1,9 @@
 # Nodepop-app
 
-- This proyect is using Vite , React and TypeScript
+- This proyect is using Vite , React ,TypeScript
+- styles: Tailwind 
 - you will need:
-
+- connect to API
 ### Pretty your code => how to prettier
 
 1. prettier.io/docs
