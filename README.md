@@ -3,7 +3,8 @@
 - This proyect is using Vite , React ,TypeScript
 - styles: Tailwind 
 - you will need:
-- connect to API
+1. connect to API
+- create a root file `.env.local` and set the base URL value in the variable `VITE_API_BASE_URL`
 ### Pretty your code => how to prettier
 
 1. prettier.io/docs
