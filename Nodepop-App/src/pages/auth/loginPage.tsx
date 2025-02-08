@@ -22,7 +22,12 @@ function LoginPage() {
                 password
             }) //pasamos el body
             console.log(`input´s value ${email} - ${password}`);
-            localStorage.setItem('accessToken', userData.accessToken); // guardamos el token en local
+            // Guardamos el token dependiendo del estado de rememberMe
+        if (rememberMe) {
+            localStorage.setItem("accessToken", userData.accessToken);
+        } else {
+            sessionStorage.setItem("accessToken", userData.accessToken);
+        }
             console.log(userData)
             
         } catch (error) {
