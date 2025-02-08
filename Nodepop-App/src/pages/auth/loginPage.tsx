@@ -1,20 +1,25 @@
 import { useState } from 'react'
 
 function LoginPage() {
+    /* capturar valores de los inputs */
     const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value)
     }
-
-    const [password, setPassword] = useState('')
     const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(event.target.value)
     }
+    /* controlando el submit */
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault() 
+        console.log(`input´s value ${email} - ${password}`);
+    };
 
     return (
         <div>
             <h3>Log In</h3>
-            <form onSubmit={(event) => event.preventDefault()}>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="email"> Email</label>
                 <input
                     type="email"
