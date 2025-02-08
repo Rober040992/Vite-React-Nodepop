@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { loginUser } from './service';
+
 
 function LoginPage() {
     /* capturar valores de los inputs */
@@ -11,9 +13,20 @@ function LoginPage() {
         setPassword(event.target.value)
     }
     /* controlando el submit */
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit =  async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault() 
-        console.log(`input´s value ${email} - ${password}`);
+        try {
+            console.log(`input´s value ${email} - ${password}`);
+            const userData =  await loginUser({
+                email,
+                password
+            }) //pasamos el body
+            localStorage.setItem('accessToken', userData.accessToken); // guardamos el token en local
+            console.log(userData.accessToken)
+            
+        } catch (error) {
+            console.error("Login failed", error);
+        }
     };
 
     return (
