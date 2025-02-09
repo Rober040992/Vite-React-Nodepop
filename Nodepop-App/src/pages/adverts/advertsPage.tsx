@@ -7,7 +7,6 @@ function AdvertsPage() {
         localStorage.removeItem('accessToken');
         sessionStorage.removeItem('accessToken');
         navigate('/login')
-        console.log("localStorage")
     }
 
     return (

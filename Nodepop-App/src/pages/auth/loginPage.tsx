@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import { loginUser } from './service';
 import RememberMeCheckbox from "../../components/Checkbox";
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
     const [rememberMe, setRememberMe] = useState(false);
     /* capturar valores de los inputs */
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const navigate = useNavigate()
+
     const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value)
     }
@@ -29,7 +32,7 @@ function LoginPage() {
             sessionStorage.setItem("accessToken", userData.accessToken);
         }
             console.log("user data",userData)
-            
+            navigate('/adverts')
         } catch (error) {
             console.error("Login failed", error);
         }
