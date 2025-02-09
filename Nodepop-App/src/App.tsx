@@ -5,17 +5,22 @@ import AdvertsPage from './pages/adverts/AdvertsPage'
 import AdvertDetail from './pages/adverts/AdvertDetailPage'
 import NewAdvertPage from './pages/adverts/NewAdvertPage'
 import NotFoundPage from './pages/NotFound404'
+import AuthRedirect from './pages/auth/AuthRedirect'
+
 
 function App() {
     return (
-        <Routes>
-            <Route path="/" element={<Navigate to="/adverts" />} />     {/* Redirige automáticamente a /adverts usando el componente <Navigate /> */}
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/adverts" element={<AdvertsPage />} />
-            <Route path="/adverts/:id" element={<AdvertDetail />} />
-            <Route path="/adverts/new" element={<NewAdvertPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <>
+            <AuthRedirect/>     {/* Se ejecuta automáticamente al cargar la app */}
+            <Routes>
+                <Route path="/" element={<Navigate to="/adverts" />} />     {/* Redirige automáticamente a /adverts usando el componente <Navigate /> */}
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/adverts" element={<AdvertsPage />} />
+                <Route path="/adverts/:id" element={<AdvertDetail />} />
+                <Route path="/adverts/new" element={<NewAdvertPage />} />
+                <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+        </>
     )
 }
 

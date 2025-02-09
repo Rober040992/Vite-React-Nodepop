@@ -17,5 +17,11 @@
            ---> Guardamos token en localStorage ---> [Usuario autenticado]
 
 - persistencia del token
+    1. En LoginPage.tsx, definimos el estado rememberMe con useState(false).
+    2. Pasamos rememberMe y setRememberMe como props al componente RememberMeCheckbox.
+    3. En Checkbox.tsx, recibimos rememberMe como prop y lo usamos para controlar si el checkbox está marcado o no (checked={rememberMe}).
+    4. Cuando el usuario interactúa con el checkbox, el onChange ejecuta setRememberMe(e.target.checked), lo que actualiza el estado en LoginPage.
+    5. El estado actualizado se refleja en RememberMeCheckbox, asegurando que el checkbox reaccione a los cambios correctamente.
 
-    
+- redirigir segun exista el token o no
+    1. crear componente que envuelva a APP que 

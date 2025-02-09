@@ -28,7 +28,7 @@ function LoginPage() {
         } else {
             sessionStorage.setItem("accessToken", userData.accessToken);
         }
-            console.log(userData)
+            console.log("user data",userData)
             
         } catch (error) {
             console.error("Login failed", error);
