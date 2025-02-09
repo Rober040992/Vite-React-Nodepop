@@ -24,4 +24,5 @@
     5. El estado actualizado se refleja en RememberMeCheckbox, asegurando que el checkbox reaccione a los cambios correctamente.
 
 - redirigir segun exista el token o no
-    1. crear componente que envuelva a APP que 
+    1. crear componente de AuthRedirect para redirigir segun exista o no el accessToken
+- logout 
