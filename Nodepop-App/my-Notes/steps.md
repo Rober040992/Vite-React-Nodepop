@@ -26,3 +26,5 @@
 - redirigir segun exista el token o no
     1. crear componente de AuthRedirect para redirigir segun exista o no el accessToken
 - logout 
+    1. crear logica en AdvertsPage para eliminar el token y redirigir a login
+- 

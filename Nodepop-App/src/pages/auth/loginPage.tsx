@@ -30,6 +30,7 @@ function LoginPage() {
             // Guardamos el token dependiendo del estado de rememberMe
             if (rememberMe) {
                 localStorage.setItem('accessToken', userData.accessToken)
+
             }
             console.log('user token', userData)
             navigate('/adverts')
