@@ -5,7 +5,6 @@ function AdvertsPage() {
 
     const handleLogout = () => {
         localStorage.removeItem('accessToken');
-        sessionStorage.removeItem('accessToken');
         navigate('/login')
     }
 

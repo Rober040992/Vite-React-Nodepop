@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { loginUser } from './service';
-import RememberMeCheckbox from "../../components/Checkbox";
-import { useNavigate } from 'react-router-dom';
+import { loginUser } from './service'
+import RememberMeCheckbox from '../../components/Checkbox'
+import { useNavigate } from 'react-router-dom'
 
 function LoginPage() {
-    const [rememberMe, setRememberMe] = useState(false);
+    const [rememberMe, setRememberMe] = useState(false)
     /* capturar valores de los inputs */
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -13,30 +13,30 @@ function LoginPage() {
     const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value)
     }
-    const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handlePasswordChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
         setPassword(event.target.value)
     }
     /* controlando el submit */
-    const handleSubmit =  async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault() 
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
         try {
-            const userData =  await loginUser({
+            const userData = await loginUser({
                 email,
-                password
+                password,
             }) //pasamos el body
-            console.log(`input´s value ${email} - ${password}`);
+            console.log(`input´s value ${email} - ${password}`)
             // Guardamos el token dependiendo del estado de rememberMe
-        if (rememberMe) {
-            localStorage.setItem("accessToken", userData.accessToken);
-        } else {
-            sessionStorage.setItem("accessToken", userData.accessToken);
-        }
-            console.log("user data",userData)
+            if (rememberMe) {
+                localStorage.setItem('accessToken', userData.accessToken)
+            }
+            console.log('user token', userData)
             navigate('/adverts')
         } catch (error) {
-            console.error("Login failed", error);
+            console.error('Login failed', error)
         }
-    };
+    }
 
     return (
         <div>
@@ -63,7 +63,10 @@ function LoginPage() {
                 />
                 <br />
                 <button type="submit"> Submit </button>
-                <RememberMeCheckbox rememberMe={rememberMe} setRememberMe={setRememberMe} />
+                <RememberMeCheckbox
+                    rememberMe={rememberMe}
+                    setRememberMe={setRememberMe}
+                />
             </form>
         </div>
     )
