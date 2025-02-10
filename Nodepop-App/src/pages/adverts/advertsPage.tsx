@@ -31,11 +31,12 @@ function AdvertsPage() {
     }, [])
 
     return (
-        <div className="advertsPage">
+        <div >
+            <button onClick={handleLogout}>Logout</button>
             {adverts.length ? (
-                <div>
+                <div >
                     {adverts.map((advert) => (
-                        <ul key={advert.id}>
+                        <ul className="advertsPage" key={advert.id}>
                             <Advert advert={advert}></Advert>
                         </ul>
                     ))}
@@ -43,7 +44,6 @@ function AdvertsPage() {
             ) : (
                 <NoAdverts />
             )}
-            <button onClick={handleLogout}>Logout</button>
         </div>
     )
 }
