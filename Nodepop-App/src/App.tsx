@@ -21,7 +21,7 @@ function App() {
                     </AuthRedirect>
                 }
             >
-                <Route  index element={<AdvertsPage/>} />
+                <Route index element={<AdvertsPage />} />
                 <Route path=":id" element={<AdvertDetail />} />
                 <Route path="new" element={<NewAdvertPage />} />
             </Route>
