@@ -1,0 +1,38 @@
+.advertsPage {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #e07171;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.advertsPage ul {
+    list-style: none;
+    padding: 0;
+}
+
+.advertsPage li {
+    background: white;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.advertsPage button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background: #ff4b5c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.advertsPage button:hover {
+    background: #ff2e43;
+}

@@ -1,8 +1,20 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { getLastestAdverts } from './service'
 import { Advert as AdvertType } from './type'
 import Advert from './Advert'
+import './AdvertsPage.css'
+
+const NoAdverts = () => (
+    <div className="noAdverts">
+        <h2>NO Adverts at the moment 😢</h2>
+        <p>you can 👇</p>
+        <Link to="/adverts/new">
+            <button>Create a new Advert</button>
+        </Link>
+        <p>Or 👇</p>
+    </div>
+)
 
 function AdvertsPage() {
     const navigate = useNavigate()
@@ -20,13 +32,17 @@ function AdvertsPage() {
 
     return (
         <div className="advertsPage">
-            <div>
-                {adverts.map((advert) => (
-                    <ul key={advert.id}>
-                        <Advert advert={advert}></Advert>
-                    </ul>
-                ))}
-            </div>
+            {adverts.length ? (
+                <div>
+                    {adverts.map((advert) => (
+                        <ul key={advert.id}>
+                            <Advert advert={advert}></Advert>
+                        </ul>
+                    ))}
+                </div>
+            ) : (
+                <NoAdverts />
+            )}
             <button onClick={handleLogout}>Logout</button>
         </div>
     )
