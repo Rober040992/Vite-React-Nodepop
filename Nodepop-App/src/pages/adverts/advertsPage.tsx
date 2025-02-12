@@ -12,7 +12,6 @@ const NoAdverts = () => (
         <Link to="/adverts/new">
             <button>Create a new Advert</button>
         </Link>
-        <p>Or 👇</p>
     </div>
 )
 
@@ -31,10 +30,10 @@ function AdvertsPage() {
     }, [])
 
     return (
-        <div >
+        <div>
             <button onClick={handleLogout}>Logout</button>
             {adverts.length ? (
-                <div >
+                <div>
                     {adverts.map((advert) => (
                         <ul className="advertsPage" key={advert.id}>
                             <Advert advert={advert}></Advert>
