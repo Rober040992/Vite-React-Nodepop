@@ -4,6 +4,8 @@ import { Advert as AdvertType } from './type'
 import { getAdvert } from './service'
 import { isApiClientError } from '../../client/client'
 import { Link } from 'react-router-dom'
+import DeleteAdvert from './DeleteAdvert'
+
 function AdvertPage() {
     const params = useParams()
     const navigate = useNavigate()
@@ -46,6 +48,8 @@ function AdvertPage() {
                             </span>
                         ))}
                     </div>
+                    {/* Botón de eliminar anuncio */}
+                    <DeleteAdvert advertId={params.id!} />
                 </div>
             ) : (
                 <p>Loading advert details...</p>
