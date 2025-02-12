@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { getLastestAdverts } from './service'
 import { Advert as AdvertType } from './type'
 import Advert from './Advert'
-import './AdvertsPage.css'
 
 const NoAdverts = () => (
     <div className="noAdverts">
@@ -30,14 +29,18 @@ function AdvertsPage() {
     }, [])
 
     return (
-        <div>
-            <button onClick={handleLogout}>Logout</button>
+        <div className="min-h-screen flex flex-col bg-black text-white p-8">
+            <button
+                onClick={handleLogout}
+                className="self-end px-4 py-2 bg-white text-black rounded-lg shadow-md hover:bg-gray-300 transition"
+            >
+                Logout
+            </button>
+
             {adverts.length ? (
-                <div>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-8 w-full max-w-7xl mx-auto">
                     {adverts.map((advert) => (
-                        <ul className="advertsPage" key={advert.id}>
-                            <Advert advert={advert}></Advert>
-                        </ul>
+                        <Advert key={advert.id} advert={advert} />
                     ))}
                 </div>
             ) : (

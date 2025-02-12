@@ -20,20 +20,33 @@ function DeleteAdvert({ advertId }: { advertId: string }) {
     }
 
     return (
-        <div>
-            <button onClick={() => setShowConfirm(true)} disabled={isDeleting}>
+        <div className="flex flex-col items-center">
+            <button
+                onClick={() => setShowConfirm(true)}
+                disabled={isDeleting}
+                className="px-4 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition disabled:opacity-50"
+            >
                 Delete Advert
             </button>
 
             {showConfirm && (
-                <div>
-                    <p>Are you sure?</p>
-                    <button onClick={handleDelete} disabled={isDeleting}>
-                        Yes
-                    </button>
-                    <button onClick={() => setShowConfirm(false)}>
-                        Cancel
-                    </button>
+                <div className="mt-4 bg-gray-900 p-4 rounded-lg shadow-lg text-center">
+                    <p className="text-lg text-gray-300">Are you sure?</p>
+                    <div className="flex justify-center gap-4 mt-4">
+                        <button
+                            onClick={handleDelete}
+                            disabled={isDeleting}
+                            className="px-4 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition disabled:opacity-50"
+                        >
+                            Yes
+                        </button>
+                        <button
+                            onClick={() => setShowConfirm(false)}
+                            className="px-4 py-2 bg-gray-700 text-white rounded-lg shadow-md hover:bg-gray-600 transition"
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </div>
             )}
         </div>
