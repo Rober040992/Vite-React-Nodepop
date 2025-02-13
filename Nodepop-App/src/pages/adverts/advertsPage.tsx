@@ -30,6 +30,11 @@ function AdvertsPage() {
 
     return (
         <div className="min-h-screen flex flex-col bg-black text-white p-8">
+            <div className="self-end px-4 py-2 bg-white text-black rounded-lg shadow-md hover:bg-gray-300 transition">
+                <Link to="/adverts/new">
+                    <button>Create a new Advert</button>
+                </Link>
+            </div>
             <button
                 onClick={handleLogout}
                 className="self-end px-4 py-2 bg-white text-black rounded-lg shadow-md hover:bg-gray-300 transition"
