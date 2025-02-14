@@ -10,7 +10,7 @@ function NewAdvertPage() {
   const [sale, setSale] = useState<boolean | null>(null);
   const [price, setPrice] = useState<number | "">("");
   const [tags, setTags] = useState<string[]>([]);
-  const [photo, setPhoto] = useState<File | null>(null);
+  const [photo, setPhoto] = useState<File>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -48,54 +48,89 @@ function NewAdvertPage() {
   };
 
   return (
+    <div className="max-w-lg mx-auto p-6 bg-gray-900 text-white rounded-lg shadow-lg">
+  <h1 className="text-2xl font-bold text-center mb-4">CREATE</h1>
+  <form onSubmit={handleSubmit} className="space-y-4">
+    {/* Nombre */}
     <div>
-      <h1>CREATE</h1>
-      <form onSubmit={handleSubmit}>
-        {/* Nombre */}
-        <label htmlFor="name">NAME:</label>
-        <input type="text" id="name" value={name} onChange={handleNameChange} required />
-
-        {/* Tipo de operación */}
-        <fieldset>
-          <legend>Operation:</legend>
-          <label>
-            <input type="radio" name="sale" value="true" checked={sale === true} onChange={handleSaleChange} required />
-            to sell
-          </label>
-          <label>
-            <input type="radio" name="sale" value="false" checked={sale === false} onChange={handleSaleChange} required />
-            to buy
-          </label>
-        </fieldset>
-
-        {/* Precio */}
-        <label htmlFor="price">Price:</label>
-        <input type="number" id="price" value={price} onChange={handlePriceChange} required />
-
-        {/* Tags */}
-        <fieldset>
-          <legend>Tags:</legend>
-          {["lifestyle", "motor", "work", "mobile"].map((tag) => (
-            <label key={tag}>
-              <input type="checkbox" value={tag} checked={tags.includes(tag)} onChange={handleTagsChange} />
-              {tag}
-            </label>
-          ))}
-        </fieldset>
-
-        {/* Foto */}
-        <label htmlFor="photo">Foto:</label>
-        <input type="file" id="photo" accept="image/*" onChange={handlePhotoChange} />
-
-        {/* Mensaje de error */}
-        {error && <p style={{ color: "red" }}>{error}</p>}
-
-        {/* Botón de enviar */}
-        <button type="submit" disabled={!isFormValid || loading}>
-          {loading ? "Creando..." : "Crear anuncio"}
-        </button>
-      </form>
+      <label htmlFor="name" className="block text-sm font-medium text-gray-300">Name:</label>
+      <input 
+        type="text" 
+        id="name" 
+        value={name} 
+        onChange={handleNameChange} 
+        required 
+        className="w-full p-2 bg-gray-800 border border-gray-700 rounded focus:ring focus:ring-blue-500"
+      />
     </div>
+
+    {/* Tipo de operación */}
+    <fieldset className="p-3 border border-gray-700 rounded">
+      <legend className="text-sm font-semibold text-gray-300">Operation:</legend>
+      <div className="flex gap-4">
+        <label className="flex items-center gap-2">
+          <input type="radio" name="sale" value="true" checked={sale === true} onChange={handleSaleChange} required />
+          To sell
+        </label>
+        <label className="flex items-center gap-2">
+          <input type="radio" name="sale" value="false" checked={sale === false} onChange={handleSaleChange} required />
+          To buy
+        </label>
+      </div>
+    </fieldset>
+
+    {/* Precio */}
+    <div>
+      <label htmlFor="price" className="block text-sm font-medium text-gray-300">Price:</label>
+      <input 
+        type="number" 
+        id="price" 
+        value={price} 
+        onChange={handlePriceChange} 
+        required 
+        className="w-full p-2 bg-gray-800 border border-gray-700 rounded focus:ring focus:ring-blue-500"
+      />
+    </div>
+
+    {/* Tags */}
+    <fieldset className="p-3 border border-gray-700 rounded">
+      <legend className="text-sm font-semibold text-gray-300">Tags:</legend>
+      <div className="flex flex-wrap gap-3">
+        {["lifestyle", "motor", "work", "mobile"].map((tag) => (
+          <label key={tag} className="flex items-center gap-2">
+            <input type="checkbox" value={tag} checked={tags.includes(tag)} onChange={handleTagsChange} />
+            {tag}
+          </label>
+        ))}
+      </div>
+    </fieldset>
+
+    {/* Foto */}
+    <div>
+      <label htmlFor="photo" className="block text-sm font-medium text-gray-300">Photo:</label>
+      <input 
+        type="file" 
+        id="photo" 
+        accept="image/*" 
+        onChange={handlePhotoChange} 
+        className="w-full p-2 bg-gray-800 border border-gray-700 rounded focus:ring focus:ring-blue-500"
+      />
+    </div>
+
+    {/* Mensaje de error */}
+    {error && <p className="text-red-500 text-sm">{error}</p>}
+
+    {/* Botón de enviar */}
+    <button 
+      type="submit" 
+      disabled={!isFormValid || loading}
+      className="w-full py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 text-white font-semibold rounded transition-all"
+    >
+      {loading ? "Creando..." : "Create it!"}
+    </button>
+  </form>
+</div>
+
   );
 }
 
