@@ -49,13 +49,20 @@ function NewAdvertPage() {
             await createNewAdvert({
                 name,
                 sale,
-                price: Number(price),
+                price,
                 tags,
                 photo,
             })
-            navigate('/adverts') // Redirigir tras éxito
+            const newAdvert = await createNewAdvert({
+                name,
+                sale,
+                price,
+                tags,
+                photo,
+            });
+            navigate(`/adverts/${newAdvert.id}`); // Redirigir al detalle del anuncio creado
         } catch (err) {
-            setError('Error al crear el anuncio. Inténtalo de nuevo.')
+            setError('Error, try again.')
         } finally {
             setLoading(false)
         }
