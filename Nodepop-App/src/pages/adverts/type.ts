@@ -7,14 +7,13 @@ export interface Advert {
     photo?: string
 }
 
-export interface AdvertPost{
-    name: string;
-    sale: boolean;
-    price: number;
-    tags: string[];
-    photo?: File;
+export interface AdvertPost {
+    name: string
+    sale: boolean
+    price: number
+    tags: string[]
+    photo?: File
 }
-
 
 export interface AdvertContent {
     content: string

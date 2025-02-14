@@ -67,31 +67,30 @@ export async function deleteAdvert(advertId: string) {
     }
 }
 
-
 export async function createNewAdvert(advertData: AdvertPost) {
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem('accessToken')
     if (!token) {
-      throw new Error("Unauthorized: No access token found");
+        throw new Error('Unauthorized: No access token found')
     }
-  
-    const formData = new FormData();
-    formData.append("name", advertData.name);
-    formData.append("sale", advertData.sale.toString());
-    formData.append("price", advertData.price.toString());
-    advertData.tags.forEach((tag) => formData.append("tags", tag));
+
+    const formData = new FormData()
+    formData.append('name', advertData.name)
+    formData.append('sale', advertData.sale.toString())
+    formData.append('price', advertData.price.toString())
+    advertData.tags.forEach((tag) => formData.append('tags', tag))
     if (advertData.photo) {
-      formData.append("photo", advertData.photo);
+        formData.append('photo', advertData.photo)
     }
-  
+
     try {
-      const response = await client.post(advertsUrl, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      return response.data;
+        const response = await client.post(advertsUrl, formData, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+        return response.data
     } catch (error) {
-      throw new Error("Failed to create advert");
+        throw new Error('Failed to create advert')
     }
-  }
+}
