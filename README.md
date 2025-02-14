@@ -1,24 +1,99 @@
-# Nodepop-app
+# Nodepop App
 
-- This proyect is using Vite , React ,TypeScript
-- styles: Tailwind 
-- you will need:
-1. connect to API
-- create a root file `.env.local` and set the base URL value in the variable `VITE_API_BASE_URL`
-### Pretty your code => how to prettier
+Nodepop es una aplicación web desarrollada con **React**, **Vite** y **TypeScript**, que permite a los usuarios gestionar anuncios a través de una API REST.
 
-1. prettier.io/docs
-2. if needed, create file .prettierrc to format and config our code
+Este frontend con React está diseñado usando como API [Nodepop API](https://github.com/davidjj76/nodepop-api).
 
-- basic config
-    ```json
-    {
-        "trailingComma": "es5",
-        "tabWidth": 4,
-        "semi": false,
-        "singleQuote": true
-    }
-    ```
+## 📌 Características
 
-3. to execute our prettier format `npm run pretty`
-4. ready to start
+- Autenticación de usuarios con login y gestión de sesión.
+- Listado de anuncios con filtros avanzados.
+- Creación y eliminación de anuncios.
+- Navegación protegida para usuarios autenticados.
+- Estilos modernos con TailwindCSS.
+
+## 🚀 Tecnologías utilizadas
+
+- **Frontend:** React, TypeScript, Vite, TailwindCSS
+- **Backend:** API REST de [Nodepop API](https://github.com/davidjj76/nodepop-api)
+- **Librerías:** React Router, Axios
+
+## 📂 Estructura del Proyecto
+
+```
+nodepop-app/
+│── src/
+│   ├── client.ts         # Configuración de Axios
+│   ├── components/       # Componentes reutilizables
+│   ├── pages/
+│   │   ├── auth/         # Páginas de autenticación (Login)
+│   │   ├── adverts/      # Páginas de anuncios (Listado, Detalle, Nuevo)
+│   ├── main.tsx          # Punto de entrada de la app
+│   ├── App.tsx           # Configuración de rutas
+│   ├── index.css         # Estilos con TailwindCSS
+│── public/               # Archivos estáticos
+│── package.json          # Dependencias y scripts
+│── tsconfig.node.json    # Configuración de TypeScript
+│── vite.config.ts        # Configuración de Vite
+```
+
+## ⚙️ Instalación y Configuración
+
+1. **Clonar el repositorio:**
+   ```sh
+   git clone https://github.com/tu-usuario/nodepop-app.git
+   cd nodepop-app
+   ```
+
+2. **Instalar dependencias:**
+   ```sh
+   npm install
+   ```
+
+3. **Configurar variables de entorno:**
+   Crear un archivo `.env.local` en la raíz con:
+   ```sh
+   VITE_API_BASE_URL=http://localhost:ejemplo3001/
+   ```
+
+4. **Iniciar el servidor de desarrollo:**
+   ```sh
+   npm run dev
+   ```
+
+## 📌 Scripts disponibles
+
+- `npm run dev`: Inicia el servidor de desarrollo con Vite.
+- `npm run build`: Genera la versión de producción.
+- `npm run preview`: Previsualiza la build.
+- `npm run lint`: Ejecuta ESLint.
+- `npm run pretty`: Formatea el código con Prettier.
+
+## 🔐 Autenticación y Seguridad
+
+- El sistema de autenticación se basa en **JWT**.
+- Se almacena el `accessToken` en `localStorage` si el usuario marca "Remember Me". (falta ajustar logica de si no se marca la casilla)
+- Rutas protegidas redirigen a `/login` si el usuario no está autenticado.
+
+## 🛠️ Funcionalidades Principales
+
+### 🔹 Login Page (`/login`)
+- Formulario para ingresar email y contraseña.
+- Opción "Recordar sesión" para mantener la autenticación.
+
+### 🔹 Adverts Page (`/adverts`)
+- Listado de anuncios con nombre, precio, tipo (compra/venta) y etiquetas.
+- Filtros por nombre, tipo, precio y etiquetas.
+- Opción para cerrar sesión.
+
+### 🔹 Advert Detail Page (`/adverts/:id`)
+- Muestra detalles del anuncio.
+- Permite eliminar el anuncio con confirmación.
+
+### 🔹 New Advert Page (`/adverts/new`)
+- Formulario para crear un nuevo anuncio.
+- Validaciones en el frontend antes de enviar los datos.
+
+
+
+_Proyecto desarrollado con 💻 por [Roberto Gomez]._
